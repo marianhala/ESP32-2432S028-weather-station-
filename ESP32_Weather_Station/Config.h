@@ -17,11 +17,9 @@ constexpr int TOUCH_PIN_IRQ = 36;
 
 // Rete usata automaticamente a ogni avvio. Il portale Wi-Fi resta disponibile
 // dall'ultima pagina qualora questa rete non fosse raggiungibile.
-// Inserire qui le credenziali della propria rete (mai committare quelle reali).
-constexpr char DEFAULT_WIFI_SSID[] = "YOUR_WIFI_SSID";
-constexpr char DEFAULT_WIFI_PASSWORD[] = "YOUR_WIFI_PASSWORD";
-// Password segnaposto del portale di configurazione, da personalizzare prima dell'uso.
-constexpr char WIFI_PORTAL_PASSWORD[] = "CHANGE_ME";
+constexpr char DEFAULT_WIFI_SSID[] = "M1";
+constexpr char DEFAULT_WIFI_PASSWORD[] = "M1testM1";
+constexpr char WIFI_PORTAL_PASSWORD[] = "12345678";
 
 constexpr float MILAN_LAT = 45.4642;
 constexpr float MILAN_LON = 9.1900;
