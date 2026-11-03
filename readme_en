@@ -1,0 +1,24 @@
+Milan Weather Station — ESP32-2432S028
+Arduino sketch for a 2.8-inch touchscreen with four pages: current weather, a three-day forecast, air quality, and a Wi-Fi scanner.
+First Build
+1. In the Arduino IDE, install the esp32 by Espressif Systems package and select ESP32 Dev Module.
+2. Install these libraries through Library Manager: TFT_eSPI by Bodmer, ArduinoJson, WiFiManager by tzapu, and XPT2046_Touchscreen by Paul Stoffregen.
+3. Open Documents/Arduino/libraries/TFT_eSPI/User_Setup.h and replace its entire contents with those of TFT_eSPI_User_Setup.h. Including the file from the sketch is not enough: the internal TFT_eSPI source files also read User_Setup.h during compilation. The stray '#' in program error means the #define directives in the installed file are commented out or preceded by *; they must be active lines beginning with #define. This board requires the ILI9341_2 driver.
+4. Open ESP32_Weather_Station.ino, connect the board using a USB-C data cable, and upload the sketch.
+5. Before compiling, replace the YOUR_WIFI_SSID, YOUR_WIFI_PASSWORD, and CHANGE_ME placeholders in Config.h with your local credentials. Do not commit or share your real credentials. If the default network is unavailable after 12 seconds, the board starts the Meteo-Milano access point. Connect to it from a phone or computer and open http://192.168.4.1 to configure your network. Credentials entered through the portal are stored on the ESP32.
+Data Sources and Update Intervals
+- Open-Meteo: current conditions and forecast for Milan, every 10 minutes.
+- CoinGecko: BTC, ETH, DOGE, and EGLD prices in euros, every 5 minutes.
+- Open-Meteo Air Quality: European AQI and PM2.5, updated every 30 minutes.
+- NTP: date, time, and seconds in the Italian time zone.
+The latest valid weather data and three-day forecast are saved in the ESP32’s NVS memory. If the network is unavailable at startup, the saved data remains visible, and the home screen shows the last update time and indicates when it is using cached data. The home screen displays feels-like temperature, wind and gusts at 10 m, sea-level pressure, and the daily maximum UV index. The forecast page shows sunrise, sunset, and the maximum UV index for each day. The air-quality page displays estimated European AQI and PM2.5 for the Milan area. The home screen uses high-contrast dark cards and updates the clock once a minute.
+
+HTTPS connections use an unverified certificate (setInsecure) to avoid managing certificates on the microcontroller. For a product exposed to the internet, this should be replaced with CA certificate verification.
+Touch and Wi-Fi
+The Wi-Fi page displays the SSID, channel, and signal strength. SCAN refreshes the list; WI-FI PORTAL reopens network setup. Selecting a network and entering its password happens in the web portal, which is more reliable than using a keyboard on a 320×240 display.
+
+The WiFiManager web portal adds a fixed Home button to internal pages in the bottom-right corner; it returns to the portal’s main page.
+
+The touchscreen uses the dedicated XPT2046_Touchscreen driver on its own SPI bus, with an affine calibration for this board. If a different production batch results in shifted touch input, adjust the six TOUCH_A*, TOUCH_B*, and TOUCH_C* coefficients in Config.h.
+Board Pins
+The display uses SCLK 14, MOSI 13, CS 15, and DC 2; the backlight is on GPIO 21. The touchscreen uses GPIOs 25, 33, 32, 39, and 36. The microSD slot is not initialized, leaving room for a future icon or persistent-cache extension.
