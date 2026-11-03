@@ -1,3 +1,4 @@
+<img width="3072" height="2210" alt="Meteo" src="https://github.com/user-attachments/assets/e042dbf5-8ad2-49eb-848a-fb515d65212a" />
 # Stazione meteo Milano — ESP32-2432S028
 
 Sketch Arduino per display touch da 2,8 pollici con quattro pagine: meteo attuale, previsione a tre giorni, qualità dell'aria e scanner Wi-Fi.
