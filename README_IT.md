@@ -6,6 +6,7 @@ Stazione meteo Milano — ESP32-2432S028
 Sketch Arduino per display touch da 2,8 pollici con quattro pagine: meteo attuale, previsione a tre giorni, qualità dell'aria e scanner Wi-Fi.
 
 Prima compilazione
+
 01 - In Arduino IDE installa il pacchetto esp32 by Espressif Systems e seleziona ESP32 Dev Module.
 
 02 - Installa da Gestione librerie: TFT_eSPI (di Bodmer), ArduinoJson, WiFiManager (di tzapu) e XPT2046_Touchscreen (di Paul Stoffregen).
