@@ -442,15 +442,18 @@ void updateWeather() {
 void updateCrypto() {
   if (WiFi.status() != WL_CONNECTED) return;
   DynamicJsonDocument doc(2048);
-  if (!getJson("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,dogecoin,multiversx&vs_currencies=eur", doc)) { statusLine = "Crypto non raggiungibile"; Serial.println(statusLine); return; }
+  if (!getJson("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,dogecoin,elrond-erd-2&vs_currencies=eur", doc)) { statusLine = "Crypto non raggiungibile"; Serial.println(statusLine); return; }
   float btc = doc["bitcoin"]["eur"] | NAN;
   float eth = doc["ethereum"]["eur"] | NAN;
   float doge = doc["dogecoin"]["eur"] | NAN;
-  float egld = doc["multiversx"]["eur"] | NAN;
+  float egld = doc["elrond-erd-2"]["eur"] | NAN;
   if (!isfinite(btc) || !isfinite(eth) || !isfinite(doge) || !isfinite(egld) || btc <= 0 || eth <= 0 || doge <= 0 || egld <= 0) {
     statusLine = "Risposta crypto incompleta"; Serial.println(statusLine); return;
   }
-  crypto.btc = btc; crypto.eth = eth; crypto.doge = doge; crypto.egld = egld; crypto.valid = true; screenDirty = true;
+  crypto.btc = btc; crypto.eth = eth; crypto.doge = doge; crypto.egld = egld; crypto.valid = true;
+  statusLine = "Mercati aggiornati";
+  Serial.printf("Mercati aggiornati: BTC %.2f EUR, ETH %.2f EUR, DOGE %.5f EUR, EGLD %.2f EUR\n", btc, eth, doge, egld);
+  screenDirty = true;
 }
 
 void updateAirQuality() {
