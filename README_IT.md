@@ -6,11 +6,11 @@ Stazione meteo Milano — ESP32-2432S028
 Sketch Arduino per display touch da 2,8 pollici con quattro pagine: meteo attuale, previsione a tre giorni, qualità dell'aria e scanner Wi-Fi.
 
 Prima compilazione
-In Arduino IDE installa il pacchetto esp32 by Espressif Systems e seleziona ESP32 Dev Module.
-Installa da Gestione librerie: TFT_eSPI (di Bodmer), ArduinoJson, WiFiManager (di tzapu) e XPT2046_Touchscreen (di Paul Stoffregen).
-Apri Documenti/Arduino/libraries/TFT_eSPI/User_Setup.h e sostituisci tutto il contenuto con quello di TFT_eSPI_User_Setup.h. Non basta includere il file dal programma: anche i sorgenti interni di TFT_eSPI leggono User_Setup.h durante la compilazione. Il messaggio stray '#' in program significa che le direttive #define nel file installato sono commentate o precedute da *; devono essere righe attive che iniziano con #define. Questa scheda richiede il driver ILI9341_2.
-Apri ESP32_Weather_Station.ino, collega la scheda con un cavo dati USB-C e carica.
-Prima di compilare, sostituisci i valori segnaposto YOUR_WIFI_SSID, YOUR_WIFI_PASSWORD e CHANGE_ME in Config.h con le tue credenziali locali. Non committare né condividere le credenziali reali. Se la rete predefinita non è disponibile entro 12 secondi, la scheda espone l'access point Meteo-Milano; collegati da telefono/PC e apri http://192.168.4.1 per configurare la rete. Le credenziali scelte nel portale vengono memorizzate dalla ESP32.
+01 - In Arduino IDE installa il pacchetto esp32 by Espressif Systems e seleziona ESP32 Dev Module.
+02 - Installa da Gestione librerie: TFT_eSPI (di Bodmer), ArduinoJson, WiFiManager (di tzapu) e XPT2046_Touchscreen (di Paul Stoffregen).
+03 - Apri Documenti/Arduino/libraries/TFT_eSPI/User_Setup.h e sostituisci tutto il contenuto con quello di TFT_eSPI_User_Setup.h. Non basta includere il file dal programma: anche i sorgenti interni di TFT_eSPI leggono User_Setup.h durante la compilazione. Il messaggio stray '#' in program significa che le direttive #define nel file installato sono commentate o precedute da *; devono essere righe attive che iniziano con #define. Questa scheda richiede il driver ILI9341_2.
+04 - Apri ESP32_Weather_Station.ino, collega la scheda con un cavo dati USB-C e carica.
+05 - Prima di compilare, sostituisci i valori segnaposto YOUR_WIFI_SSID, YOUR_WIFI_PASSWORD e CHANGE_ME in Config.h con le tue credenziali locali. Non committare né condividere le credenziali reali. Se la rete predefinita non è disponibile entro 12 secondi, la scheda espone l'access point Meteo-Milano; collegati da telefono/PC e apri http://192.168.4.1 per configurare la rete. Le credenziali scelte nel portale vengono memorizzate dalla ESP32.
 Fonti e aggiornamenti
 Open-Meteo: condizioni attuali e previsione di Milano, ogni 10 minuti.
 CoinGecko: BTC, ETH, DOGE ed EGLD in euro, ogni 5 minuti.
