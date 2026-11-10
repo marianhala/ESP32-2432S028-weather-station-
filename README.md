@@ -2,6 +2,10 @@
 
 #################################
 
+
+Published under the MIT license - See LICENSE file for more details.
+
+
 ESP32-2432S028-weather-station-
 ESP32 weather station HOME, FORECAST, AIR_QUALITY, WIFI_SCAN
 
